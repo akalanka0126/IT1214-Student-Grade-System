@@ -23,7 +23,7 @@ public class Main {
                     addStudent(sc);
                     break;
                 case 2:
-                    
+                    displayStudents();
                     break;
                 case 3:
                    
@@ -51,6 +51,30 @@ public class Main {
 
         students.add(new Student(id, name, marks));
         System.out.println("Student added successfully!");
+    }
+	static void displayStudents() {
+        if (students.isEmpty()) {
+            System.out.println("No students found.");
+            return;
+        }
+
+        for (Student s : students) {
+            s.displayStudent();
+        }
+    }
+
+    static void searchStudent(Scanner sc) {
+        System.out.print("Enter Student ID: ");
+        String id = sc.next();
+
+        for (Student s : students) {
+            if (s.getId().equals(id)) {
+                System.out.println("Student Found:");
+                s.displayStudent();
+                return;
+            }
+        }
+        System.out.println("Student not found!");
     }
 
     
