@@ -26,16 +26,16 @@ public class Main {
                     displayStudents();
                     break;
                 case 3:
-                   
+                    searchStudent(sc);
                     break;
                 case 4:
-                    
+                    calculateAverage();
                     break;
                 case 5:
-                    
+                    System.out.println("Exiting...");
                     break;
                 default:
-                    
+                    System.out.println("Invalid choice!");
             }
 
         } while (choice != 5);
@@ -52,7 +52,8 @@ public class Main {
         students.add(new Student(id, name, marks));
         System.out.println("Student added successfully!");
     }
-	static void displayStudents() {
+
+    static void displayStudents() {
         if (students.isEmpty()) {
             System.out.println("No students found.");
             return;
@@ -77,5 +78,18 @@ public class Main {
         System.out.println("Student not found!");
     }
 
-    
+    static void calculateAverage() {
+        if (students.isEmpty()) {
+            System.out.println("No students to calculate.");
+            return;
+        }
+
+        double sum = 0;
+        for (Student s : students) {
+            sum += s.getMarks();
+        }
+
+        double avg = sum / students.size();
+        System.out.println("Average Marks: " + avg);
+    }
 }
